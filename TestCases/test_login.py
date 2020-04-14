@@ -5,22 +5,13 @@ from appium.webdriver.common.mobileby import MobileBy
 import time, pytest
 import logging
 from Common.my_logging import *
-
-
-#操作对象的设备信息
-desired_caps = {}
-desired_caps["platformName"] = "Android"
-desired_caps["platformVersion"] = "5.1.1"
-desired_caps["deviceName"] = "Android Emulator"
-desired_caps["appPackage"] = "com.xxzb.fenwoo"
-desired_caps["appActivity"] = "com.xxzb.fenwoo.activity.addition.WelcomeActivity"
+from Common.base_driver import BaseDriver
 
 
 
 @pytest.mark.login
 def test_login_success():
-    #连接appium
-    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+    driver = BaseDriver().base_driver()
     time.sleep(3)
     logging.info("加载test_login")
     logging.info("test_login_driver是: " + str(driver))
