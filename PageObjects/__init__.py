@@ -14,3 +14,8 @@ def clean_cache(dir_path):
                 clean_cache(os.path.join(dir_path, dir))
 
 clean_cache(dir_path)
+
+from .welcome_page import WelcomePage
+from .login_page import LoginPage
+from .index_page import IndexPage
+from .userInfo_page import UserInfoPage

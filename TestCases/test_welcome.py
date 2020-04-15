@@ -6,17 +6,18 @@ import time
 import pytest
 import logging
 from Common.my_logging import *
-from PageObjects.welcome_page import WelcomePage
+from PageObjects import *
 
 
 
-welcome = WelcomePage()
+welcome_page = WelcomePage()
 
 #滑屏操作
 @pytest.mark.welcome
 def test_welcome():
-    welcome.swipe_screen()
-    welcome.get_spe_screenshot()
-    image_text = welcome.identify_screenshot()
+    welcome_page.swipe_screen()
+    welcome_page.get_spe_screenshot()
+    image_text = welcome_page.identify_screenshot()
+    welcome_page.quit()
     assert image_text == "立即体验"
 

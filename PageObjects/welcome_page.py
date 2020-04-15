@@ -1,31 +1,24 @@
-from Common.base_driver import BaseDriver
-import time
+from .base_page import BasePage
 import pytesseract
 from PIL import Image
 import Images
+import time
 
 
-class WelcomePage:
+class WelcomePage(BasePage):
 
-    #初始化Driver
-    driver = BaseDriver().base_driver()
+    #配置tessdata目录路径
+    tessdata_dir_config = '--tessdata-dir "D:/program/Tesseract-OCR/tessdata"'
 
     #元素定位
     experience_now_id = "com.xxzb.fenwoo:id/btn_start"
 
-    tessdata_dir_config = '--tessdata-dir "D:/program/Tesseract-OCR/tessdata"'
-
     #滑屏
     def swipe_screen(self):
-        #等待2s
-        time.sleep(2)
-        #获取屏幕尺寸
+        time.sleep(1)
         size = self.driver.get_window_size()
         for i in range(3):
-            #向左滑动
-            #swipe还有一个参数duration，单位是ms，防止操作过快
-            self.driver.swipe(size["width"] * 0.9, size["height"] * 0.5, size["width"] * 0.1, size["height"] * 0.1)
-            time.sleep(0.5)
+            self.swipe(0.9, 0.5, 0.1, 0.5, size)
 
 
     #截取特定区域的图片
@@ -51,7 +44,7 @@ class WelcomePage:
 
     #点击立即体验
     def click_experience_now(self):
-        self.driver.find_element_by_id(self.experience_now_id).click()
+        self.get_element(self.experience_now_id).click()
 
 
 

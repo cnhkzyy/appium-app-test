@@ -1,8 +1,0 @@
-Tue, 14 Apr 2020 20:30:44  test_welcome.py  <module> [line:23] INFO 加载test_welcome
-Tue, 14 Apr 2020 20:30:44  test_welcome.py  <module> [line:24] INFO test_welcome_driver是: <appium.webdriver.webdriver.WebDriver (session="a76dade0-9f12-4547-9d8e-d76e237035b5")>
-Tue, 14 Apr 2020 20:30:55  test_login.py  test_login_success [line:25] INFO 加载test_login
-Tue, 14 Apr 2020 20:30:55  test_login.py  test_login_success [line:26] INFO test_login_driver是: <appium.webdriver.webdriver.WebDriver (session="3b9e79e5-cf40-4ec9-972f-9f0fa0dab6b9")>
-Tue, 14 Apr 2020 20:30:55  test_login.py  test_login_success [line:27] INFO test_login开始了!
-Tue, 14 Apr 2020 20:30:55  test_login.py  test_login_success [line:28] INFO test_login的driver是: <appium.webdriver.webdriver.WebDriver (session="3b9e79e5-cf40-4ec9-972f-9f0fa0dab6b9")>
-Tue, 14 Apr 2020 20:31:12  test_welcome.py  test_welcome [line:31] INFO test_welcome开始了!
-Tue, 14 Apr 2020 20:31:12  test_welcome.py  test_welcome [line:32] INFO test_welcome的driver是: <appium.webdriver.webdriver.WebDriver (session="a76dade0-9f12-4547-9d8e-d76e237035b5")>

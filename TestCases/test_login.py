@@ -6,33 +6,28 @@ import time, pytest
 import logging
 from Common.my_logging import *
 from Common.base_driver import BaseDriver
+from PageObjects import *
+
+
+welcome_page = WelcomePage()
+login_page = LoginPage()
+index_page = IndexPage()
+user_info_page = UserInfoPage()
 
 
 
 @pytest.mark.login
 def test_login_success():
-    driver = BaseDriver().base_driver()
-    time.sleep(3)
-    logging.info("加载test_login")
-    logging.info("test_login_driver是: " + str(driver))
-    logging.info("test_login开始了!")
-    logging.info("test_login的driver是: " + str(driver))
-    size = driver.get_window_size()
-    for i in range(3):
-        driver.swipe(size["width"] * 0.9, size["height"] * 0.5, size["width"] * 0.1, size["height"] * 0.5, 200)
-    WebDriverWait(driver, 10, 1).until(EC.visibility_of_element_located((MobileBy.ID, "com.xxzb.fenwoo:id/btn_start")))
-    driver.find_element_by_id("com.xxzb.fenwoo:id/btn_start").click()
-    WebDriverWait(driver, 10, 1).until(EC.visibility_of_element_located((MobileBy.ID, "com.xxzb.fenwoo:id/btn_login")))
-    driver.find_element_by_id("com.xxzb.fenwoo:id/btn_login").click()
-    WebDriverWait(driver, 10, 1).until(EC.visibility_of_element_located((MobileBy.ID, "com.xxzb.fenwoo:id/et_phone")))
-    driver.find_element_by_id("com.xxzb.fenwoo:id/et_phone").send_keys("18684720553")
-    driver.find_element_by_id("com.xxzb.fenwoo:id/btn_next_step").click()
-    WebDriverWait(driver, 10, 1).until(EC.visibility_of_element_located((MobileBy.ID, "com.xxzb.fenwoo:id/et_pwd")))
-    driver.find_element_by_id("com.xxzb.fenwoo:id/et_pwd").send_keys("python")
-    driver.find_element_by_id("com.xxzb.fenwoo:id/btn_next_step").click()
-    driver.close_app()
-    driver.quit()
-    assert True == True
+    welcome_page.swipe_screen()
+    welcome_page.click_experience_now()
+    login_page.click_register_login()
+    login_page.input_phone("18684720553")
+    login_page.input_pwd("python")
+    index_page.click_later()
+    index_page.click_me()
+    nickName = user_info_page.get_nickName()
+    user_info_page.quit()
+    assert nickName == "华华"
 
 
 
