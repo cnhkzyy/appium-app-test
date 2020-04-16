@@ -1,4 +1,4 @@
-### 版本5.0
+### 版本6.0
 1. 完善了test_login.py和test_invest.py中的其他用例
 2. 新建了一个test_datas用来储存数据，实现了数据和代码的分离
 
