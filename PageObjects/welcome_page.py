@@ -15,7 +15,7 @@ class WelcomePage(BasePage):
 
     #滑屏
     def swipe_screen(self):
-        time.sleep(1)
+        time.sleep(1.5)
         size = self.driver.get_window_size()
         for i in range(3):
             self.swipe(0.9, 0.5, 0.1, 0.5, size)

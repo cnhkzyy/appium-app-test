@@ -11,6 +11,8 @@ class BaseDriver:
     desired_caps["appActivity"] = "com.xxzb.fenwoo.activity.addition.WelcomeActivity"
 
 
-    def base_driver(self):
+    def base_driver(self, automationName="appium"):
+        if automationName != "appium":
+            self.desired_caps["automationName"] = automationName
         driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_capabilities=self.desired_caps)
         return driver

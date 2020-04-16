@@ -11,8 +11,8 @@ import logging
 
 class BasePage:
 
-    driver = BaseDriver().base_driver()
-    logging.info("driver: " + str(driver))
+    def __init__(self, driver):
+        self.driver = driver
 
 
     #等待元素可见
@@ -22,7 +22,7 @@ class BasePage:
 
     #等待元素存在
     def wait_elePresence(self, locator, by=MobileBy, wait_time=30):
-        WebDriverWait(self.driver, wait_time).until()
+        WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located((by, locator)))
 
 
     #查找并返回一个元素
@@ -44,9 +44,13 @@ class BasePage:
         time.sleep(1)
 
 
-    #退出
-    def quit(self):
-        self.driver.close_app()
+    #获取toast元素
+    def get_toast_element(self, locator, by=MobileBy.XPATH, wait_time=15):
+        self.wait_elePresence(locator, by, wait_time)
+        element = self.driver.find_element(by, locator)
+        return element
+
+
 
 
 

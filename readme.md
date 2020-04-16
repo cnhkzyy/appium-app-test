@@ -1,30 +1,54 @@
-### 版本4.0
-1. 采用PageObject模式，将页面属性方法和测试方法分离，降低了代码的耦合性，提高了可读性，易于理解和维护
-2. 使用BasePage类抽离出了公共的driver和方法，其他页面对象通过继承BasePage类来继承其driver和方法
-3. 在PageObjects包的__init__.py中导入所有模块下面的方法，这样只需在测试类中，导入PageObjects包下的所有属性和方法(```from PageObjects import *```)，就可以直接使用各个页面对象类，节约了代码量
-
+### 版本5.0
+1. 新增conftest.py，编写了公共的fixture，实例化driver对象并返回，以供测试方法在运行时使用
+2. 新增了test_login.py模块中的异常用例
+3. 完善了获取toast的公共方法和fixture
 
 
 ### 缺点
-目前是页面对象类继承BasePage类，而BasePage类中初始化的公共driver存在一定的问题：比如A页面继承BasePage类，B也继承BasePage类，初始化的driver只有一份，当A对应的测试类执行完，此时driver的状态已不是初始状态，所以B对应的测试类的执行会出现问题。
-为了保证driver的"干净"，最好一个用例开始前初始化一份，然后用例结束后释放driver。所以之前提到的一直都是要同一个drivert的方法不可取
+数据和方法对象未分离，直接写死在测试方法中
 
 
-
-### 源码分析
-在编写BasePage中的方法时，看见了这么一句```WebDriverWait(self.driver, wait_time).until(EC.visibility_of_element_located((by, locator)))```
-查看源码类```visibility_of_element_located```如下：
+### 编写思路
+如果这样写，又会出现driver对象覆盖的问题：
+```test_welcome.py```
 ```python
-    class visibility_of_element_located(object):
-         def __init__(self, locator):
-            self.locator = locator
+...
 
-         def __call__(self, driver):
-            try:
-                return _element_if_visible(_find_element(driver, self.locator))
-            except StaleElementReferenceException:
-                return False
+driver = BaseDriver().base_driver()
+welcome_page = WelcomePage(driver)
+
+
+#测试首页滑屏
+@pytest.mark.welcome
+def test_welcome():
+    welcome_page.swipe_screen()
+    welcome_page.get_spe_screenshot()
+    image_text = welcome_page.identify_screenshot()
+    assert image_text == "立即体验"
+...
 ```
-```__call__```的作用是，让实例对象也像函数一样作为可调用对象来用
-visibility_of_element_located()
-具体分析内容：https://www.cnblogs.com/my_captain/p/12706472.html
+```test_login.py```
+```python
+...
+
+driver = BaseDriver().base_driver()
+welcome_page = WelcomePage(driver)
+login_page = LoginPage(driver)
+index_page = IndexPage(driver)
+user_info_page = UserInfoPage(driver)
+
+
+@pytest.mark.login
+def test_login_success():
+    welcome_page.swipe_screen()
+    welcome_page.click_experience_now()
+    login_page.click_register_login()
+    login_page.input_phone("18684720553")
+    login_page.input_pwd("python")
+    index_page.click_later()
+    index_page.click_me()
+    nickName = user_info_page.get_nickName()
+    user_info_page.quit()
+    assert nickName == "华华"
+...
+```
