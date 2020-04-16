@@ -10,7 +10,7 @@
 
 ### 编写思路
 如果这样写，又会出现driver对象覆盖的问题：
-```test_welcome.py```
+test_welcome.py
 ```python
 ...
 
@@ -27,7 +27,7 @@ def test_welcome():
     assert image_text == "立即体验"
 ...
 ```
-```test_login.py```
+test_login.py
 ```python
 ...
 
