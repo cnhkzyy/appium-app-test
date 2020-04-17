@@ -1,6 +1,16 @@
-### 版本master
-1. appium + python + PageObject + pytest实现app自动化
-2. 分层设计思想
-3. 建立多个分支版本，每次分支版本按照依次递进的方式逐步完善，最后再合并到master上
+### 版本7.0
+1. 新增了caps目录，使用其中的caps.yml实现desired_caps和server信息的配置话
+2. 新增了测试报告和入口模块main.py
+3. 新增了common目录下的conf_dir.py，实现了路径的参数化。同时由于在main.py方法中运行时，page_objects目录下的__init__.py中使用相对路径会报错，通过参数化绝对路径的形式解决了这一问题
+4. 安装失败重试插件pytest-rerunfailures，尝试以三种方式运行失败重试
+5. 在pageObjects下的__init__.py中新增清理测试报告的操作
 
 
+### 缺点
+1. driver的初始化数据准备desired_caps没有实现配置化
+2. test_invest.py中的登录步骤很重复，能否合并，如果在conftest中提取出一个login_driver，中间又涉及到页面对象中的方法，比较混杂
+3. 缺少设置手势密码的方法操作
+4. 缺少失败截图
+5. 缺少命令行启动appium-server的方法操作
+
+  

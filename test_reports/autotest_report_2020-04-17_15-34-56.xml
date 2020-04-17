@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="beck-PC" name="pytest" skipped="0" tests="12" time="489.762" timestamp="2020-04-17T15:34:57.722404"><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="9" name="test_invest_success" time="106.551"><failure message="AssertionError: assert 6168834983.0 == (6168834983.98 + 1000)
+ +  where 6168834983.0 = float(&apos;6168834983&apos;)
+ +  and   6168834983.98 = float(&apos;6168834983.98&apos;)">self = &lt;test_cases.test_invest.TestInvest object at 0x000000000CF75860&gt;
+common_driver = &lt;appium.webdriver.webdriver.WebDriver (session=&quot;38446589-0080-402a-9bf9-0b8cb2bf425e&quot;)&gt;
+
+    @pytest.mark.fail
+    #@pytest.mark.flaky(reruns=1, reruns_delay=2)
+    def test_invest_success(self, common_driver):
+        WelcomePage(common_driver).swipe_screen()
+        WelcomePage(common_driver).click_experience_now()
+        LoginPage(common_driver).click_register_login()
+        LoginPage(common_driver).input_phone(login_success_data[&quot;phone&quot;])
+        LoginPage(common_driver).input_pwd(login_success_data[&quot;pwd&quot;])
+        IndexPage(common_driver).click_later()
+        InvestPage(common_driver).enter_invest()
+        before_invest_money = InvestPage(common_driver).get_user_left_money()
+        InvestPage(common_driver).input_invest_money(invest_success_data[&quot;money&quot;])
+        InvestPage(common_driver).invest_now()
+        InvestPage(common_driver).click_confirm()
+        InvestPage(common_driver).click_back()
+        IndexPage(common_driver).click_me()
+        after_invest_money = UserInfoPage(common_driver).get_user_left_money()
+&gt;       assert float(before_invest_money) == float(after_invest_money) + invest_success_data[&quot;check&quot;]
+E       AssertionError: assert 6168834983.0 == (6168834983.98 + 1000)
+E        +  where 6168834983.0 = float(&apos;6168834983&apos;)
+E        +  and   6168834983.98 = float(&apos;6168834983.98&apos;)
+
+test_cases\test_invest.py:27: AssertionError</failure></testcase><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="31" name="test_invest_noMoney" time="33.918"></testcase><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="46" name="test_invest_zeroMoney" time="34.237"></testcase><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="63" name="test_invest_noMutil_money" time="33.561"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="11" name="test_login_success" time="86.870"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="24" name="test_login_noPhone" time="24.490"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="34" name="test_login_phoneIsEmpty" time="26.126"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="44" name="test_login_phoneLenError" time="26.258"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="55" name="test_login_noRegister" time="26.324"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="65" name="test_login_noPwd" time="27.154"></testcase><testcase classname="test_cases.test_login.TestLogin" file="test_cases\test_login.py" line="75" name="test_login_pwdError" time="33.514"></testcase><testcase classname="test_cases.test_welcome.TestWelcome" file="test_cases\test_welcome.py" line="9" name="test_welcome" time="24.238"></testcase></testsuite></testsuites>
