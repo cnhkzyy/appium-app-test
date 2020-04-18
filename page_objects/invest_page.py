@@ -22,7 +22,7 @@ class InvestPage(BasePage):
 
     #获取用户可用余额
     def get_user_left_money(self):
-        user_left_money = re.sub("\D", "", self.get_element(self.input_invest_money_id).text)
+        user_left_money = re.sub(r"\D", "", self.get_element(self.input_invest_money_id).text)
         return user_left_money
 
 

@@ -1,7 +1,7 @@
 import os
 import re
 import shutil
-from common.conf_dir import root_dir, logs_dir, test_reports_dir
+from common.conf_dir import root_dir, logs_dir, html_reports_dir
 
 
 
@@ -37,7 +37,7 @@ def clean_report(dir_path):
             os.remove(os.path.join(dir_path, file))
 
 
-clean_report(test_reports_dir)
+clean_report(html_reports_dir)
 
 
 from .welcome_page import WelcomePage
