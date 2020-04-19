@@ -1,4 +1,4 @@
-### 版本9.0
+### 版本10.0
 1. 新增失败截图
 2. 修改test_html_reports目录名字为html_reports
 
