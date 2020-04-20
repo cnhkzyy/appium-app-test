@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="1" failures="0" hostname="beck-PC" name="pytest" skipped="0" tests="1" time="0.953" timestamp="2020-04-19T16:20:22.088419"><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="9" name="test_invest_success" time="0.002"><error message="test setup failure">@pytest.fixture
+    def common_driver():
+        global driver
+    
+&gt;       base_driver = BaseDriver(eval(cmdopt))
+E       TypeError: eval() arg 1 must be a string, bytes or code object
+
+test_cases\conftest.py:23: TypeError</error></testcase></testsuite></testsuites>

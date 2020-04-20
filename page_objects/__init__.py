@@ -15,7 +15,7 @@ def clean_cache(dir_path):
                 clean_cache(os.path.join(dir_path, dir))
 
 
-clean_cache(root_dir)
+#clean_cache(root_dir)
 
 
 
@@ -26,7 +26,7 @@ def clean_log(dir_path):
             os.remove(os.path.join(dir_path, file))
 
 
-clean_log(logs_dir)
+#clean_log(logs_dir)
 
 
 
@@ -37,7 +37,7 @@ def clean_report(dir_path):
             os.remove(os.path.join(dir_path, file))
 
 
-clean_report(html_reports_dir)
+#clean_report(html_reports_dir)
 
 
 from .welcome_page import WelcomePage
