@@ -1,6 +1,0 @@
-Sun, 19 Apr 2020 16:20:51  remote_connection.py  __init__ [line:117] INFO Could not connect to port 4725 on host 127.0.0.1
-Sun, 19 Apr 2020 16:20:51  remote_connection.py  __init__ [line:136] INFO Could not get IP address for host: 127.0.0.1
-Sun, 19 Apr 2020 16:20:51  remote_connection.py  __init__ [line:117] INFO Could not connect to port 4723 on host 127.0.0.1
-Sun, 19 Apr 2020 16:20:51  remote_connection.py  __init__ [line:136] INFO Could not get IP address for host: 127.0.0.1
-Sun, 19 Apr 2020 16:20:52  connectionpool.py  urlopen [line:662] WARNING Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000000000CFF4A90>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /wd/hub/session
-Sun, 19 Apr 2020 16:20:52  connectionpool.py  urlopen [line:662] WARNING Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000000000CFF7E10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /wd/hub/session

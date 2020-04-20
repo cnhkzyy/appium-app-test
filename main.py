@@ -1,11 +1,12 @@
 import pytest, os
 import time
-from common.conf_dir import html_reports_dir
+from common.conf_dir import root_dir, logs_dir, html_reports_dir
 from multiprocessing import Pool
-
+from clean import *
 
 device_infos = [{"platform_version": "5.1.1", "server_port": 4723, "device_port": 62001, "system_port": 8200},
                 {"platform_version": "7.1.1", "server_port": 4725, "device_port": 62025, "system_port": 8201}]
+
 
 cur_time = time.strftime("%Y-%m-%d_%H-%M-%S")
 

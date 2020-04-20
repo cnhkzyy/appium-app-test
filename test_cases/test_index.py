@@ -7,7 +7,7 @@ class TestIndex:
 
 
     #设置手势密码
-    def test_set_gesture_pwd(self, common_toast_driver):
+    def test_set_gesture_pwd(self, common_driver):
         WelcomePage(common_toast_driver).swipe_screen()
         WelcomePage(common_toast_driver).click_experience_now()
         LoginPage(common_toast_driver).click_register_login()

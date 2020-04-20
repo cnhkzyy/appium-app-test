@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="1" failures="0" hostname="beck-PC" name="pytest" skipped="0" tests="1" time="1.140" timestamp="2020-04-19T16:22:27.353325"><testcase classname="test_cases.test_invest.TestInvest" file="test_cases\test_invest.py" line="9" name="test_invest_success" time="0.003"><error message="test setup failure">pytestconfig = &lt;_pytest.config.Config object at 0x0000000003721160&gt;
-
-    @pytest.fixture
-    def cmdopt(pytestconfig):
-&gt;       return pytestconfig.getoption.cmdopt
-E       AttributeError: &apos;function&apos; object has no attribute &apos;cmdopt&apos;
-
-test_cases\conftest.py:13: AttributeError</error></testcase></testsuite></testsuites>
