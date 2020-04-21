@@ -4,15 +4,15 @@ from common.conf_dir import root_dir, logs_dir, html_reports_dir
 from multiprocessing import Pool
 from clean import *
 
-device_infos = [{"platform_version": "5.1.1", "server_port": 4723, "device_port": 62001, "system_port": 8200},
-                {"platform_version": "7.1.1", "server_port": 4725, "device_port": 62025, "system_port": 8201}]
+device_infos = [{"docker_name": "appium_1", "platform_version": "7.1.2", "device_ip":"192.168.0.102", "device_port": 6666, "server_port": 4723, "system_port": 8200},
+                {"docker_name": "appium_2", "platform_version": "5.1.1", "device_ip":"192.168.0.104", "device_port": 5555, "server_port": 4725, "system_port": 8201}]
 
 
 cur_time = time.strftime("%Y-%m-%d_%H-%M-%S")
 
-def run_parallel(device_infos):
+def run_parallel(device_info):
     pytest.main([
-        f"--cmdopt={device_infos}",
+        f"--cmdopt={device_info}",
         #"--reruns=1",
         #"--reruns-delay=10",
         "-m", "fail",

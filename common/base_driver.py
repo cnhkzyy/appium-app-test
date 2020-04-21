@@ -4,11 +4,13 @@ import yaml
 import os
 
 
+
 class BaseDriver:
 
     def __init__(self, device_info):
         self.device_info = device_info
-        cmd = "start appium -p {0} -bp {1} -U 127.0.0.1:{2}".format(self.device_info["server_port"], self.device_info["server_port"] + 1, self.device_info["device_port"])
+        #cmd = "start appium -p {0} -bp {1} -U 127.0.0.1:{2}".format(self.device_info["server_port"], self.device_info["server_port"] + 1, self.device_info["device_port"])
+        cmd = f"docker {self.device_info['docker_name']}"
         os.system(cmd)
 
 
@@ -20,7 +22,7 @@ class BaseDriver:
         #版本信息
         desired_caps["platform_version"] = self.device_info["platform_version"]
         #设备名称
-        desired_caps["deviceName"] = f"127.0.0.1:{self.device_info['device_port']}"
+        desired_caps["deviceName"] = f"{self.device_info['device_ip']}:{self.device_info['device_port']}"
         #系统端口号
         desired_caps["systemPort"] = self.device_info["system_port"]
 
