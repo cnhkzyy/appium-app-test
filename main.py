@@ -1,8 +1,9 @@
 import pytest, os
 import time
-from common.conf_dir import root_dir, logs_dir, html_reports_dir
+from common.conf_dir import root_dir, logs_dir, html_reports_dir, allure_reports_dir
 from multiprocessing import Pool
 from clean import *
+
 
 device_infos = [{"docker_name": "appium_1", "platform_version": "7.1.2", "device_ip":"192.168.0.102", "device_port": 6666, "server_port": 4723, "system_port": 8200},
                 {"docker_name": "appium_2", "platform_version": "5.1.1", "device_ip":"192.168.0.104", "device_port": 5555, "server_port": 4725, "system_port": 8201}]
@@ -13,14 +14,17 @@ cur_time = time.strftime("%Y-%m-%d_%H-%M-%S")
 def run_parallel(device_info):
     pytest.main([
         f"--cmdopt={device_info}",
-        #"--reruns=1",
+        "--reruns=1",
         #"--reruns-delay=10",
-        "-m", "fail",
-        "--junitxml", f"{html_reports_dir}/autotest_report_{cur_time}.xml",
-        "--html", f"{html_reports_dir}/autotest_report_{cur_time}.html",
-        "--css", f"{html_reports_dir}/assets/style.css",
-        "--self-contained-html"])
+        #"-m", "login and fail",
+        #"--junitxml", f"{html_reports_dir}/autotest_report_{cur_time}.xml",
+        #"--html", f"{html_reports_dir}/autotest_report_{cur_time}.html",
+        #"--css", f"{html_reports_dir}/assets/style.css",
+        #"--self-contained-html",
+        "--alluredir", allure_reports_dir
+       ])
 
+os.system(f"allure generate {allure_reports_dir} -o {allure_reports_dir}/html --clean")
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ from common.base_driver import BaseDriver
 import time
 from common.my_logging import *
 import logging
+import allure
 
 
 

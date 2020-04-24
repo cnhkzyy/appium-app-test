@@ -2,6 +2,7 @@ from .base_page import BasePage
 from appium.webdriver.webdriver import MobileBy
 from appium.webdriver.common.touch_action import TouchAction
 import time
+import allure
 
 
 class IndexPage(BasePage):
@@ -29,36 +30,43 @@ class IndexPage(BasePage):
 
 
     #点击以后再说
+    @allure.step("点击以后再说")
     def click_later(self):
         self.get_element(self.cancel_gesture_pwd_id).click()
 
 
     #点击立即设置
+    @allure.step("点击立即设置")
     def click_set_now(self):
         self.get_element(self.set_now_id).click()
 
 
     #点击创建手势密码
+    @allure.step("点击设置手势密码")
     def click_create_gesture_pwd(self):
         self.get_element(self.create_gesture_pwd).click()
 
 
     #点击确定
+    @allure.step("点击确定")
     def click_confirm(self):
         self.get_element(self.confirm_id).click()
 
 
     #点击继续
+    @allure.step("点击继续")
     def click_continue(self):
         self.get_element(self.continue_id).click()
 
 
     #点击取消
+    @allure.step("点击取消")
     def click_cancle(self):
         self.get_element(self.cancle_id).click()
 
 
     #绘制九宫格密码
+    @allure.step("绘制九宫格密码")
     def set_gesture_pwd(self):
         #进入九宫格绘制
         self.click_set_now()
@@ -86,6 +94,7 @@ class IndexPage(BasePage):
 
 
     #获取设置成功的文本
+    @allure.step("获取设置成功的文本")
     def get_set_success_toast_text(self):
         set_success_toast_text = self.get_toast_element(self.set_success_toast_xpath).text
         return set_success_toast_text
@@ -93,6 +102,7 @@ class IndexPage(BasePage):
 
 
     #点击我
+    @allure.step("点击我")
     def click_me(self):
         self.get_element(self.me_xpath, by=MobileBy.XPATH).click()
 

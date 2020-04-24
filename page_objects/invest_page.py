@@ -1,5 +1,6 @@
 from .base_page import BasePage
 import re
+import allure
 
 class InvestPage(BasePage):
 
@@ -16,50 +17,59 @@ class InvestPage(BasePage):
 
 
     #进入投资页面
+    @allure.step("进入投资页面")
     def enter_invest(self):
         self.get_element(self.enter_invest_id).click()
 
 
     #获取用户可用余额
+    @allure.step("获取用户可用余额")
     def get_user_left_money(self):
         user_left_money = re.sub(r"\D", "", self.get_element(self.input_invest_money_id).text)
         return user_left_money
 
 
     #输入投资金额
+    @allure.step("输入投资金额")
     def input_invest_money(self, money):
         #输入投资金额
         self.get_element(self.input_invest_money_id).send_keys(money)
 
 
     #点击立即投资
+    @allure.step("点击立即投资")
     def invest_now(self):
         self.get_element(self.invest_now_id).click()
 
 
     #点击确定
+    @allure.step("点击确定")
     def click_confirm(self):
         self.get_element(self.confirm_invest_success_id).click()
 
 
     #点击返回
+    @allure.step("点击返回")
     def click_back(self):
         self.get_element(self.back_id).click()
 
 
     #获取请输入投资金额toast弹出框的文本内容
+    @allure.step("获取请输入投资金额toast弹出框的文本内容")
     def get_toast_text_1(self):
         toast_text_1 = self.get_toast_element(self.toast_xpath_1).text
         return toast_text_1
 
 
     #获取最小投资金额toast弹出框的文本内容
+    @allure.step("获取最小投资金额toast弹出框的文本内容")
     def get_toast_text_2(self):
         toast_text_2 = self.get_toast_element(self.toast_xpath_2).text
         return toast_text_2
 
 
     #获取投资金额必须为100整数倍的toast弹出框的内容
+    @allure.step("获取投资金额必须为100整数倍的toast弹出框的内容")
     def get_toast_text_3(self):
         toast_text_3 = self.get_toast_element(self.toast_xpath_3).text
         return toast_text_3

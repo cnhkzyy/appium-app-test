@@ -1,7 +1,7 @@
 import os
 import re
 import shutil
-from common.conf_dir import root_dir, logs_dir, html_reports_dir
+from common.conf_dir import root_dir, logs_dir, html_reports_dir, allure_reports_dir
 
 
 #清缓存
@@ -32,3 +32,17 @@ def clean_report(dir_path):
             os.remove(os.path.join(dir_path, file))
 
 clean_report(html_reports_dir)
+
+
+
+#清allure报告
+def clean_allure_report(dir_path):
+    for file in os.listdir(dir_path):
+        if os.path.isfile(os.path.join(dir_path, file)) and re.search("json|txt|png", file) != None:
+            os.remove(os.path.join(dir_path, file))
+
+clean_allure_report(allure_reports_dir)
+
+
+
+

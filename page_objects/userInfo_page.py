@@ -1,5 +1,6 @@
 from .base_page import BasePage
 import re
+import allure
 
 
 class UserInfoPage(BasePage):
@@ -11,12 +12,14 @@ class UserInfoPage(BasePage):
 
 
     #获取昵称
+    @allure.step("获取昵称")
     def get_nickName(self):
         nickName = self.get_element(self.nickName_id).text
         return nickName
 
 
     #获取用户余额
+    @allure.step("获取用户余额")
     def get_user_left_money(self):
         user_left_money = re.sub(",", "", self.get_element(self.user_left_money_id).text)
         return user_left_money

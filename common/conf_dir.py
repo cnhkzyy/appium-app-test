@@ -11,3 +11,6 @@ images_dir = cur_dir.replace("common", "images")
 logs_dir = cur_dir.replace("common", "logs")
 
 html_reports_dir = cur_dir.replace("common", "html_reports")
+
+allure_reports_dir = cur_dir.replace("common", "allure_reports")
+

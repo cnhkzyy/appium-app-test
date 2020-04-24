@@ -4,7 +4,7 @@ from .base_page import BasePage
 from common.conf_dir import images_dir
 #import images
 import time
-
+import allure
 
 class WelcomePage(BasePage):
 
@@ -15,6 +15,7 @@ class WelcomePage(BasePage):
     experience_now_id = "com.xxzb.fenwoo:id/btn_start"
 
     #滑屏
+    @allure.step("滑屏")
     def swipe_screen(self):
         time.sleep(1.5)
         size = self.driver.get_window_size()
@@ -44,6 +45,7 @@ class WelcomePage(BasePage):
 
 
     #点击立即体验
+    @allure.step("点击立即体验")
     def click_experience_now(self):
         self.get_element(self.experience_now_id).click()
 

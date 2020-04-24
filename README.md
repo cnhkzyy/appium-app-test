@@ -1,4 +1,4 @@
-### 版本11
+### 版本11.0
 1. docker容器多进程并发运行测试用例
 2. 由于centos7下tesseract-ocr配置有问题，因此修改test_welcome.py的测试用例
 3. 使用dcoker运行appium-server时，要用```docker appium_1```，不能使用```docker logs -f appium_1```打印实时日志，否则窗口不会执行后面的操作

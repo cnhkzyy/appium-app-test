@@ -2,13 +2,21 @@ from page_objects import *
 from test_datas import *
 import pytest
 import re
+import allure
 
 
+@allure.feature("投资功能")
 class TestInvest:
 
     #投资成功
     @pytest.mark.fail
     #@pytest.mark.flaky(reruns=1, reruns_delay=2)
+    @allure.story("正常投资")
+    @allure.title("投资功能：正常投资")
+    @allure.severity("blocker")
+    @allure.tag("最重要", "回归测试")
+    @allure.issue("http://192.168.0.109:8080/browse/FUT-2", name="用户投资后显示投资金额不正确")
+    @allure.description("投资功能：正常情况下进行投资")
     def test_invest_success(self, common_driver):
         WelcomePage(common_driver).swipe_screen()
         WelcomePage(common_driver).click_experience_now()
@@ -29,6 +37,11 @@ class TestInvest:
 
 
     #不输入金额
+    @allure.story("不输入金额")
+    @allure.title("投资功能：不输入金额")
+    @allure.severity("critical")
+    @allure.tag("次重要")
+    @allure.description("投资功能：不输入金额的情况下进行投资")
     def test_invest_noMoney(self, common_toast_driver):
         WelcomePage(common_toast_driver).swipe_screen()
         WelcomePage(common_toast_driver).click_experience_now()
@@ -45,6 +58,11 @@ class TestInvest:
 
     #输入金额为0
     @pytest.mark.invest
+    @allure.story("输入金额为0")
+    @allure.title("投资功能：输入金额为0")
+    @allure.severity("critical")
+    @allure.tag("次重要")
+    @allure.description("投资功能：输入金额为0的情况下进行投资")
     def test_invest_zeroMoney(self, common_toast_driver):
         WelcomePage(common_toast_driver).swipe_screen()
         WelcomePage(common_toast_driver).click_experience_now()
@@ -62,6 +80,11 @@ class TestInvest:
 
     #输入投资不是100的整数倍
     @pytest.mark.invest
+    @allure.story("投资金额不是100的整数倍")
+    @allure.title("投资功能：投资金额不是100的整数倍")
+    @allure.severity("critical")
+    @allure.tag("次重要")
+    @allure.description("投资功能：投资金额不是100的整数倍的情况下进行投资")
     def test_invest_noMutil_money(self, common_toast_driver):
         WelcomePage(common_toast_driver).swipe_screen()
         WelcomePage(common_toast_driver).click_experience_now()
