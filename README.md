@@ -1,4 +1,4 @@
-### 版本14.0
+### 版本13.0
 1. 基于pytest-xdist实现分布式APP自动化测试
 2. 在Centos7下执行
 3. 使用jenkins做持续集成，结合allure生成测试报告
