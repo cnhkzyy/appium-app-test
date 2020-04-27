@@ -22,9 +22,9 @@ class BaseDriver:
         #版本信息
         desired_caps["platform_version"] = self.device_info["platform_version"]
         #设备名称
-        desired_caps["deviceName"] = f"{self.device_info['device_ip']}:{self.device_info['device_port']}"
+        desired_caps["deviceName"] = f"YeShen"
         #系统端口号
-        desired_caps["systemPort"] = self.device_info["system_port"]
+        #desired_caps["systemPort"] = self.device_info["system_port"]
 
         if automationName != "appium":
             desired_caps["automationName"] = automationName
